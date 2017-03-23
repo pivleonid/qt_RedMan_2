@@ -53,6 +53,9 @@ QPixmap* right_jump;
 QPixmap* right_down;
 QPixmap* right_run;
 QPixmap* right_left;
+//
+QPixmap* cat_left;
+QPixmap* cat_right;
 
 QTimer* timer_sprites;
 };

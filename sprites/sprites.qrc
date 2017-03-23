@@ -8,5 +8,7 @@
         <file>right_run.png</file>
         <file>right_to_left.png</file>
         <file>right_up.png</file>
+        <file>cat_left.png</file>
+        <file>cat_right.png</file>
     </qresource>
 </RCC>
