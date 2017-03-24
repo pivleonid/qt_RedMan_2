@@ -20,7 +20,17 @@ MainWindow::MainWindow(QWidget *parent) :
     scene->addItem(redman);
     redman->setPos( 0, 0);
     connect(timer, &QTimer::timeout,redman, &RedMan::slotTimerMan);
-    timer->start(50);
+    timer->start(10);
+
+    scene->addLine(-500,60,500,60,QPen(Qt::black));
+
+//
+    m_player = new QMediaPlayer(this);          // Инициализация плеера
+    m_playlist = new QMediaPlaylist(m_player);  // Инициализация плейлиста
+
+    m_player->setPlaylist(m_playlist);          // Установка плейлиста в аудио плеер
+    m_playlist->addMedia(QUrl("qrc:/sprites/understand.wav"));       // Добавление трека в плейлист
+    m_playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop); // Зацикливание трека
 
 }
 

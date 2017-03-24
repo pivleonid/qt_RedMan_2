@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sprites/cat_left.png</file>
+        <file>sprites/cat_right.png</file>
+        <file>sprites/Oheee.m4a</file>
+        <file>sprites/question.m4a</file>
+        <file>sprites/understand.m4a</file>
+        <file>sprites/understand.wav</file>
+    </qresource>
+</RCC>

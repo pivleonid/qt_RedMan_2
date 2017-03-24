@@ -1,25 +1,18 @@
 #include "redman.h"
 
-static void mapToParent_jump(int n);
+
 
 RedMan::RedMan(QObject *parent) :
     QObject(parent), QGraphicsItem()
 {
 
-
+jump_count = 0;
  state_man = Stand_state; //планирую под это состояние ввести анимацию
- sprites_count = 960; //нулевой отсчет спрайтов
- left_jump  = new QPixmap(":jump_left.png");
- left_down  = new QPixmap(":Left_down.png");
- left_run   = new QPixmap(":left_run.png");
- left_right = new QPixmap(":Left_to_right.png");
- right_jump = new QPixmap(":right_up.png");
- right_down = new QPixmap(":right_down.png");
- right_run  = new QPixmap(":right_run.png");
- right_left = new QPixmap(":right_to_left.png");
+ sprites_count = 0; //нулевой отсчет спрайтов
  //
- cat_left = new QPixmap(":cat_left.png");
- cat_right = new QPixmap(":cat_right.png");
+ cat_left = new QPixmap(":/sprites/cat_left.png");
+ cat_right = new QPixmap(":/sprites/cat_right.png");
+
  timer_sprites = new QTimer;
  connect(timer_sprites,&QTimer::timeout, this, &RedMan::slotKey_sprites);
 }
@@ -55,7 +48,7 @@ void RedMan::slotTimerMan(){
 void RedMan::slotKey_sprites(){
     switch(state_man){
     case Left_State:
-        setPos(mapToParent(-5, 0));
+        setPos(mapToParent(-15, 0));
         sprites_count -= 120;
         if (sprites_count <= 0){
             sprites_count = 960;
@@ -63,7 +56,7 @@ void RedMan::slotKey_sprites(){
             }
             break;
     case Right_State:
-        setPos(mapToParent(5, 0));
+        setPos(mapToParent(15, 0));
         sprites_count += 120;
         if (sprites_count >= 960){
             sprites_count = 0;
@@ -71,21 +64,22 @@ void RedMan::slotKey_sprites(){
             }
             break;
     case Jump_Left:
-       // setPos(mapToParent(-8, 0));
         mapToParent_jump(jump_count);
         jump_count++;
-        sprites_count += 77;
-        if (sprites_count >= 847){
-            sprites_count = 0;
+        sprites_count -= 120;
+        if (sprites_count <= 120){
+            sprites_count = 960;
             jump_count = 0;
             timer_sprites->stop();
             }
             break;
     case Jump_Right:
-        setPos(mapToParent(8, 0));
-        sprites_count += 76.27;
-        if (sprites_count >= 839){
+        mapToParent_jump(jump_count);
+        sprites_count += 120;
+         jump_count++;
+        if (sprites_count >= 840){
             sprites_count = 0;
+             jump_count= 0 ;
             timer_sprites->stop();
             }
             break;
@@ -115,15 +109,30 @@ void RedMan::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
      * и последние два аргумента - это ширина и высота отображаем части изображение, то есть кадра
      * */
     if(state_man == Left_State )
-        painter->drawPixmap(-60,-60, *cat_left ,sprites_count ,120 /*или -120*/ , 120, 120);
+        painter->drawPixmap(-60,-60, *cat_left ,sprites_count ,120 , 120, 120);
     if(state_man == Right_State )
-        painter->drawPixmap(-50,-50,  *cat_right,sprites_count ,120 , 120, 120);
+        painter->drawPixmap(-60,-60,  *cat_right,sprites_count ,120 , 120, 120);
     if(state_man == Jump_Left )
-        painter->drawPixmap(-50,-50,  *left_jump,sprites_count ,0 , 77, 99);
+        painter->drawPixmap(-60,-60,  *cat_left,sprites_count ,360 , 120, 120);
     if(state_man == Jump_Right )
-        painter->drawPixmap(-50,-50,  *right_jump,sprites_count ,0 , 77, 95);
+        painter->drawPixmap(-60,-60,  *cat_right,sprites_count ,360 , 120, 120);
     if(state_man == Stand_state )
-        painter->drawPixmap(-50,-50,  *cat_right,sprites_count ,0 , 120, 120);
+        painter->drawPixmap(-60,-60,  *cat_right,sprites_count ,0 , 120, 120);
+//огриничения
+    if(this->x() - 10 < -500){
+        this->setX(-490);       // слева
+    }
+    if(this->x() + 10 > 500){
+        this->setX(490);        // справа
+    }
+
+    if(this->y() - 10 < -500){
+        this->setY(-490);       // сверху
+    }
+    if(this->y() + 10 > 500){
+        this->setY(490);        // снизу
+    }
+
     Q_UNUSED(option);
     Q_UNUSED(widget);
 }
@@ -134,30 +143,54 @@ void RedMan::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
  void RedMan:: mapToParent_jump(int n){
 
-
-     switch(n){
+ if (state_man == Jump_Left){
+        switch(n){
      case 0:
-         setPos(mapToParent(-1, 1));
+         setPos(mapToParent(-20, 0));
+         break;
      case 1:
-         setPos(mapToParent(-1, 1));
+         setPos(mapToParent(-20 ,-20 ));
+          break;
      case 2:
-         setPos(mapToParent(-1, 1));
+         setPos(mapToParent(-20, -20));
+          break;
      case 3:
-         setPos(mapToParent(-1, 1));
+         setPos(mapToParent(-20, -20));
+          break;
      case 4:
-         setPos(mapToParent(-1, 1));
+         setPos(mapToParent(-20, 20));
+          break;
      case 5:
-         setPos(mapToParent(-1, 1));
+         setPos(mapToParent(-20, 20));
+          break;
      case 6:
-         setPos(mapToParent(-1, -1));
-     case 7:
-         setPos(mapToParent(-1, -1));
-     case 8:
-         setPos(mapToParent(-1, -1));
-     case 9:
-         setPos(mapToParent(-1, -1));
-     case 10:
-         setPos(mapToParent(-1, -2));
+         setPos(mapToParent(-20, 20));
      }
 
  }
+ if (state_man == Jump_Right){
+     switch(n){
+     case 0:
+         setPos(mapToParent(20, 0));
+         break;
+     case 1:
+         setPos(mapToParent(20 ,-20 ));
+          break;
+     case 2:
+         setPos(mapToParent(20, -20));
+          break;
+     case 3:
+         setPos(mapToParent(20, -20));
+          break;
+     case 4:
+         setPos(mapToParent(20, 20));
+          break;
+     case 5:
+         setPos(mapToParent(20, 20));
+          break;
+     case 6:
+         setPos(mapToParent(20, 20));
+     }
+
+ }
+}

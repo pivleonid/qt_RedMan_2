@@ -196,6 +196,7 @@ Makefile: fish.pro ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/qt_config.prf \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake.conf \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/toolchain.prf \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/default_pre.prf \
@@ -221,8 +222,10 @@ Makefile: fish.pro ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/lex.prf \
 		fish.pro \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/qtmaind.prl \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Multimedia.prl \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl \
+		../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Network.prl \
 		../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile fish.pro -spec win32-g++ CONFIG+=debug CONFIG+=qml_debug
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -362,6 +365,7 @@ Makefile: fish.pro ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/qt_config.prf:
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake.conf:
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/toolchain.prf:
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/default_pre.prf:
@@ -387,8 +391,10 @@ Makefile: fish.pro ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/lex.prf:
 fish.pro:
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/qtmaind.prl:
+../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Multimedia.prl:
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl:
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl:
+../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Network.prl:
 ../../../../Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile fish.pro -spec win32-g++ CONFIG+=debug CONFIG+=qml_debug

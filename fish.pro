@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -35,4 +36,4 @@ FORMS    += mainwindow.ui
 DISTFILES +=
 
 RESOURCES += \
-    sprites/sprites.qrc
+    sprit.qrc

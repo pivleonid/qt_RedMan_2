@@ -5,6 +5,8 @@
 #include <QGraphicsScene>
 #include <redman.h>
 #include <QTimer>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +25,8 @@ private:
     QGraphicsScene  *scene;     /// Объявляем графическую сцену
     RedMan          *redman;  /// и треугольник
     QTimer          *timer;
+    QMediaPlayer   *m_player;
+    QMediaPlaylist *m_playlist;
 };
 
 #endif // MAINWINDOW_H

@@ -42,17 +42,8 @@ int state_man;
 // итерация спрайтов
 int sprites_count;
 // счетчик прыжков
-int jump_count;
+uint jump_count;
 
-
-QPixmap* left_jump;
-QPixmap* left_down;
-QPixmap* left_run;
-QPixmap* left_right;
-QPixmap* right_jump;
-QPixmap* right_down;
-QPixmap* right_run;
-QPixmap* right_left;
 //
 QPixmap* cat_left;
 QPixmap* cat_right;
